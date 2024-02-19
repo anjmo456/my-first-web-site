@@ -12,9 +12,34 @@
   </script>
   <title>WEB1 - Welcome</title>
   <meta charset="utf-8">
+  <script>
+    window.onload = function() {
+      // 페이지 로드될 때 이전 상태를 확인하고 적용
+      var mode = localStorage.getItem('mode');
+      if (mode === 'night') {
+        setNightMode();
+      } else {
+        setDayMode();
+      }
+    };
+  
+    function setNightMode() {
+      document.querySelector('body').style.backgroundColor = 'black';
+      document.querySelector('body').style.color = 'white';
+      localStorage.setItem('mode', 'night'); // 상태를 로컬 스토리지에 저장
+    }
+  
+    function setDayMode() {
+      document.querySelector('body').style.backgroundColor = 'white';
+      document.querySelector('body').style.color = 'black';
+      localStorage.setItem('mode', 'day'); // 상태를 로컬 스토리지에 저장
+    }
+  </script>
 </head>
 <body>
   <h1><a href="index.html">WEB</a></h1>
+  <input type="button" value="night" onclick="setNightMode()">
+  <input type="button" value="day" onclick="setDayMode()">
   <ol>
     <li><a href="1.html">HTML</a></li>
     <li><a href="2.html">CSS</a></li>
